@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nimbus &amp; Co — Demo Webshop</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">🛍️ Nimbus &amp; Co</div>
+    <button id="cart-toggle" class="cart-toggle">
+      Cart <span id="cart-count">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Gear for wherever you're headed</h1>
+      <p>Browse the shop, or just tell Aiko what you're looking for.</p>
+    </section>
+
+    <section class="filters">
+      <input id="search-input" type="text" placeholder="Search products..." />
+      <select id="category-select">
+        <option value="">All categories</option>
+      </select>
+    </section>
+
+    <section id="product-grid" class="product-grid"></section>
+  </main>
+
+  <aside id="cart-panel" class="cart-panel hidden">
+    <div class="cart-panel-header">
+      <h2>Your Cart</h2>
+      <button id="cart-close" class="icon-btn">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">Subtotal: <span id="cart-subtotal">$0.00</span></div>
+      <button id="checkout-btn" class="primary-btn">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- AI sales agent chat widget -->
+  <div id="chat-widget" class="chat-widget">
+    <button id="chat-fab" class="chat-fab">💬 Ask Aiko</button>
+    <div id="chat-panel" class="chat-panel hidden">
+      <div class="chat-panel-header">
+        <span>Aiko · AI Shopping Assistant</span>
+        <button id="chat-close" class="icon-btn">✕</button>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <div class="chat-msg agent">
+          Hi! I'm Aiko 👋 Tell me what you're shopping for (e.g. "headphones under $100" or "a gift for a hiker") and I'll help you find it — and check out when you're ready.
+        </div>
+      </div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" type="text" placeholder="Type a message..." autocomplete="off" />
+        <button type="submit" class="primary-btn">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

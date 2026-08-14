@@ -1,0 +1,196 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Off-Grid Centrum",
+    "theme_version": "1.0.0",
+    "theme_author": "Off-Grid Centrum",
+    "theme_documentation_url": "https://offgridcentrum.nl",
+    "theme_support_url": "https://offgridcentrum.nl/nl/contact"
+  },
+  {
+    "name": "Kleuren",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Merkkleuren"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primair (donkergroen)",
+        "default": "#0F3D2E"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_dark",
+        "label": "Primair donker (header/footer)",
+        "default": "#0A2A20"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (zon-oranje)",
+        "default": "#F5A524"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_dark",
+        "label": "Accent hover",
+        "default": "#D98E12"
+      },
+      {
+        "type": "header",
+        "content": "Achtergrond & tekst"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Achtergrond",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_background_alt",
+        "label": "Achtergrond (zand)",
+        "default": "#F6F3EC"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Tekst",
+        "default": "#1C211F"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Tekst (subtiel)",
+        "default": "#5B655F"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Randen",
+        "default": "#E3E1D8"
+      },
+      {
+        "type": "color",
+        "id": "color_success",
+        "label": "Succes",
+        "default": "#2E7D32"
+      }
+    ]
+  },
+  {
+    "name": "Typografie",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Kopteksten",
+        "default": "poppins_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Broodtekst",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Maximale paginabreedte",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1280
+      },
+      {
+        "type": "select",
+        "id": "corner_radius",
+        "label": "Afronding hoeken",
+        "options": [
+          { "value": "0px", "label": "Recht" },
+          { "value": "6px", "label": "Licht afgerond" },
+          { "value": "10px", "label": "Afgerond" },
+          { "value": "14px", "label": "Sterk afgerond" }
+        ],
+        "default": "10px"
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logobreedte",
+        "min": 80,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "default": 160
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_linkedin", "label": "LinkedIn" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      { "type": "text", "id": "phone_number", "label": "Telefoonnummer", "default": "085 00 126 50" },
+      { "type": "text", "id": "email_address", "label": "E-mailadres", "default": "info@offgridcentrum.nl" },
+      { "type": "textarea", "id": "address", "label": "Adres / showroom" }
+    ]
+  },
+  {
+    "name": "Winkelwagen",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Winkelwagentype",
+        "options": [
+          { "value": "drawer", "label": "Zijpaneel" },
+          { "value": "page", "label": "Pagina" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_free_shipping_bar",
+        "label": "Toon gratis verzendbalk",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold",
+        "label": "Gratis verzending vanaf (€)",
+        "default": "1000"
+      }
+    ]
+  }
+]

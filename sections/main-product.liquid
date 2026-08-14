@@ -1,0 +1,105 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<section class="product-section page-width">
+  {% render 'breadcrumbs' %}
+
+  <div class="product-section__grid">
+    <div class="product-gallery">
+      <div class="product-gallery__main">
+        {%- if product.featured_media -%}
+          <img
+            id="ProductMainImage"
+            src="{{ product.featured_media | image_url: width: 900 }}"
+            srcset="{{ product.featured_media | image_url: width: 600 }} 600w, {{ product.featured_media | image_url: width: 900 }} 900w, {{ product.featured_media | image_url: width: 1200 }} 1200w"
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ product.featured_media.alt | escape }}"
+            width="{{ product.featured_media.width }}"
+            height="{{ product.featured_media.height }}"
+          >
+        {%- else -%}
+          <div class="product-gallery__placeholder">{% render 'icon', icon: 'sun' %}</div>
+        {%- endif -%}
+      </div>
+      {%- if product.media.size > 1 -%}
+        <div class="product-gallery__thumbs">
+          {%- for media in product.media -%}
+            <button type="button" class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb data-full="{{ media | image_url: width: 1200 }}">
+              <img src="{{ media | image_url: width: 160 }}" alt="{{ media.alt | escape }}" loading="lazy" width="80" height="80">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-info">
+      {%- if product.vendor != blank -%}<p class="product-info__vendor">{{ product.vendor }}</p>{%- endif -%}
+      <h1 class="product-info__title">{{ product.title }}</h1>
+
+      {% render 'price', target: current_variant, show_badge: true %}
+
+      {%- if product.metafields.reviews.rating -%}
+        <div class="product-info__rating">
+          {%- for i in (1..5) -%}{% render 'icon', icon: 'star' %}{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="product-info__description rte">
+        {{ product.description }}
+      </div>
+
+      {% form 'product', product, id: 'ProductForm', class: 'product-form' %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" id="ProductFormId">
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="product-form__option">
+              <label class="product-form__option-label">{{ option.name }}</label>
+              <div class="product-form__pills">
+                {%- for value in option.values -%}
+                  <input type="radio" id="Option-{{ option.position }}-{{ forloop.index }}" name="option-{{ option.position }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} class="visually-hidden product-option-input">
+                  <label for="Option-{{ option.position }}-{{ forloop.index }}" class="product-form__pill">{{ value }}</label>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <div class="product-form__quantity">
+          <label for="Quantity">Aantal</label>
+          <div class="quantity-selector">
+            <button type="button" data-quantity-minus aria-label="Verminder aantal">{% render 'icon', icon: 'minus' %}</button>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" inputmode="numeric">
+            <button type="button" data-quantity-plus aria-label="Verhoog aantal">{% render 'icon', icon: 'plus' %}</button>
+          </div>
+        </div>
+
+        <button type="submit" name="add" class="button button--accent button--full product-form__submit" {% unless current_variant.available %}disabled{% endunless %}>
+          {%- if current_variant.available -%}
+            In winkelwagen &mdash; {{ current_variant.price | money }}
+          {%- else -%}
+            Uitverkocht
+          {%- endif -%}
+        </button>
+      {% endform %}
+
+      <ul class="product-info__usps">
+        <li>{% render 'icon', icon: 'truck' %} Snelle levering, voor 16:00 besteld = vandaag verzonden</li>
+        <li>{% render 'icon', icon: 'shield' %} Fabrieksgarantie & Nederlandse support</li>
+        <li>{% render 'icon', icon: 'tool' %} Persoonlijk installatieadvies mogelijk</li>
+      </ul>
+
+      {%- if product.metafields.custom.specifications != blank -%}
+        <details class="product-info__accordion" open>
+          <summary>Specificaties</summary>
+          <div class="rte">{{ product.metafields.custom.specifications }}</div>
+        </details>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

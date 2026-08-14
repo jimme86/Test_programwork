@@ -1,0 +1,32 @@
+<section class="blog-index page-width">
+  {% render 'breadcrumbs' %}
+  <h1 class="blog-index__title">{{ blog.title }}</h1>
+  <div class="blog-posts__grid">
+    {%- paginate blog.articles by section.settings.posts_per_page -%}
+      {%- for article in blog.articles -%}
+        <a href="{{ article.url }}" class="blog-card">
+          <div class="blog-card__media">
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: width: 500 }}" alt="{{ article.title | escape }}" loading="lazy" width="500" height="333">
+            {%- else -%}
+              <div class="collection-card__placeholder">{% render 'icon', icon: 'sun' %}</div>
+            {%- endif -%}
+          </div>
+          <p class="blog-card__date">{{ article.published_at | date: '%d %B %Y' }}</p>
+          <h3 class="blog-card__title">{{ article.title }}</h3>
+          <p class="blog-card__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 110 }}</p>
+        </a>
+      {%- endfor -%}
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blogoverzicht",
+  "settings": [
+    { "type": "range", "id": "posts_per_page", "label": "Artikelen per pagina", "min": 3, "max": 24, "step": 3, "default": 9 }
+  ]
+}
+{% endschema %}

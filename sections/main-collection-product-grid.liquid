@@ -1,0 +1,59 @@
+<section class="collection-grid page-width">
+  <div class="collection-grid__layout">
+    <aside class="collection-filters">
+      {%- if collection.filters != blank -%}
+        <form id="FacetFilterForm">
+          {%- for filter in collection.filters -%}
+            <div class="collection-filters__group">
+              <h3>{{ filter.label }}</h3>
+              {%- for value in filter.values -%}
+                <label class="collection-filters__option">
+                  <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="document.getElementById('FacetFilterForm').submit()">
+                  {{ value.label }} ({{ value.count }})
+                </label>
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </form>
+      {%- endif -%}
+    </aside>
+
+    <div class="collection-grid__main">
+      <div class="collection-grid__toolbar">
+        <p class="collection-grid__count">{{ collection.products_count }} producten</p>
+        <form id="SortForm" class="collection-grid__sort">
+          <label for="SortBy" class="visually-hidden">Sorteren op</label>
+          <select name="sort_by" id="SortBy" onchange="window.location.href=this.value">
+            {%- for option in collection.sort_options -%}
+              <option value="?sort_by={{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </form>
+      </div>
+
+      <div class="product-grid product-grid--{{ section.settings.columns }}">
+        {%- paginate collection.products by section.settings.products_per_page -%}
+          {%- for card_product in collection.products -%}
+            {% render 'product-card', card_product: card_product %}
+          {%- else -%}
+            <p>Er zijn nog geen producten in deze collectie.</p>
+          {%- endfor -%}
+        {%- endpaginate -%}
+      </div>
+
+      {%- paginate collection.products by section.settings.products_per_page -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Productraster",
+  "settings": [
+    { "type": "select", "id": "columns", "label": "Kolommen (desktop)", "options": [{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "4" },
+    { "type": "range", "id": "products_per_page", "label": "Producten per pagina", "min": 8, "max": 48, "step": 4, "default": 24 }
+  ]
+}
+{% endschema %}

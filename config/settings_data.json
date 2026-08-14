@@ -1,0 +1,28 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_primary": "#0F3D2E",
+      "color_primary_dark": "#0A2A20",
+      "color_accent": "#F5A524",
+      "color_accent_dark": "#D98E12",
+      "color_background": "#FFFFFF",
+      "color_background_alt": "#F6F3EC",
+      "color_text": "#1C211F",
+      "color_text_light": "#5B655F",
+      "color_border": "#E3E1D8",
+      "color_success": "#2E7D32",
+      "font_heading": "poppins_n6",
+      "font_body": "inter_n4",
+      "page_width": 1280,
+      "corner_radius": "10px",
+      "logo_width": 160,
+      "phone_number": "085 00 126 50",
+      "email_address": "info@offgridcentrum.nl",
+      "address": "Toon ons adres hier – bezoek op afspraak",
+      "cart_type": "drawer",
+      "show_free_shipping_bar": true,
+      "free_shipping_threshold": "1000"
+    }
+  }
+}

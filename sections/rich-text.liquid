@@ -1,0 +1,27 @@
+<section class="rich-text">
+  <div class="page-width">
+    <div class="rich-text__inner rich-text__inner--{{ section.settings.alignment }}">
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rich-text__content">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_url | default: '#' }}" class="button button--secondary">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tekstblok",
+  "settings": [
+    { "type": "select", "id": "alignment", "label": "Uitlijning", "options": [{"value":"left","label":"Links"},{"value":"center","label":"Midden"}], "default": "center" },
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Waarom off-grid gaan?" },
+    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>Onafhankelijk van het net betekent geen stijgende energierekening, geen netcongestie-gedoe en energie die altijd beschikbaar is – thuis, op de camper of op het water.</p>" },
+    { "type": "text", "id": "button_label", "label": "Knoptekst" },
+    { "type": "url", "id": "button_url", "label": "Knoplink" }
+  ],
+  "presets": [
+    { "name": "Tekstblok" }
+  ]
+}
+{% endschema %}

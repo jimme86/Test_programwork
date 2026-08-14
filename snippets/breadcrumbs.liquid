@@ -1,0 +1,23 @@
+<nav class="breadcrumbs" aria-label="Broodkruimel">
+  <ol class="breadcrumbs__list">
+    <li><a href="{{ routes.root_url }}">Home</a></li>
+    {%- if template contains 'collection' and collection -%}
+      {%- if current_tags -%}
+        <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+        <li aria-current="page">{{ current_tags | join: ' + ' }}</li>
+      {%- else -%}
+        <li aria-current="page">{{ collection.title }}</li>
+      {%- endif -%}
+    {%- elsif template contains 'product' -%}
+      {%- if collection.url -%}<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>{%- endif -%}
+      <li aria-current="page">{{ product.title }}</li>
+    {%- elsif template contains 'blog' -%}
+      <li aria-current="page">{{ blog.title }}</li>
+    {%- elsif template contains 'article' -%}
+      <li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+      <li aria-current="page">{{ article.title }}</li>
+    {%- elsif page -%}
+      <li aria-current="page">{{ page.title }}</li>
+    {%- endif -%}
+  </ol>
+</nav>

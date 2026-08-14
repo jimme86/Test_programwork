@@ -1,0 +1,60 @@
+<cart-drawer id="CartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer__overlay" data-cart-drawer-close></div>
+  <div class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="Winkelwagen">
+    <div class="cart-drawer__header">
+      <h2>Winkelwagen ({{ cart.item_count }})</h2>
+      <button type="button" class="cart-drawer__close" data-cart-drawer-close aria-label="Sluiten">{% render 'icon', icon: 'close' %}</button>
+    </div>
+
+    <div class="cart-drawer__body">
+      {%- if cart.item_count > 0 -%}
+        <ul class="cart-drawer__items" role="list">
+          {%- for item in cart.items -%}
+            <li class="cart-drawer__item">
+              <a href="{{ item.url }}" class="cart-drawer__item-image">
+                {%- if item.image -%}
+                  <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.image.alt | escape }}" loading="lazy" width="80" height="80">
+                {%- endif -%}
+              </a>
+              <div class="cart-drawer__item-info">
+                <a href="{{ item.url }}" class="cart-drawer__item-title">{{ item.product.title }}</a>
+                {%- if item.variant.title != 'Default Title' -%}
+                  <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
+                {%- endif -%}
+                <div class="cart-drawer__item-qty">
+                  <form action="{{ routes.cart_change_url }}" method="post">
+                    <input type="hidden" name="line" value="{{ forloop.index }}">
+                    <button type="submit" name="quantity" value="{{ item.quantity | minus: 1 }}" aria-label="Verminder aantal">{% render 'icon', icon: 'minus' %}</button>
+                    <span>{{ item.quantity }}</span>
+                    <button type="submit" name="quantity" value="{{ item.quantity | plus: 1 }}" aria-label="Verhoog aantal">{% render 'icon', icon: 'plus' %}</button>
+                  </form>
+                </div>
+              </div>
+              <div class="cart-drawer__item-price">{{ item.final_line_price | money }}</div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="cart-drawer__empty">
+          <p>Je winkelwagen is leeg.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="button button--primary">Verder winkelen</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__footer">
+        {%- if settings.show_free_shipping_bar -%}
+          {% render 'free-shipping-bar' %}
+        {%- endif -%}
+        <div class="cart-drawer__subtotal">
+          <span>Subtotaal</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <p class="cart-drawer__note">Verzendkosten en kortingen worden berekend bij het afrekenen.</p>
+        <a href="{{ routes.cart_url }}" class="button button--secondary button--full">Bekijk winkelwagen</a>
+        <a href="{{ routes.cart_url }}/checkout" class="button button--primary button--full">Afrekenen</a>
+      </div>
+    {%- endif -%}
+  </div>
+</cart-drawer>

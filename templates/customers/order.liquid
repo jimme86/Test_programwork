@@ -1,0 +1,30 @@
+<section class="account-page page-width">
+  <a href="{{ routes.account_url }}" class="link-with-icon">&larr; Terug naar account</a>
+  <h1>Order {{ order.name }}</h1>
+  <p>Geplaatst op {{ order.created_at | date: '%d-%m-%Y' }} &middot; {{ order.financial_status_label }} &middot; {{ order.fulfillment_status_label }}</p>
+
+  <table class="cart-table">
+    <thead><tr><th>Product</th><th>Prijs</th><th>Aantal</th><th>Totaal</th></tr></thead>
+    <tbody>
+      {%- for line_item in order.line_items -%}
+        <tr>
+          <td>{{ line_item.title }}</td>
+          <td>{{ line_item.price | money }}</td>
+          <td>{{ line_item.quantity }}</td>
+          <td>{{ line_item.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+
+  <div class="cart-page__summary">
+    <div class="cart-page__subtotal"><span>Subtotaal</span><span>{{ order.subtotal_price | money }}</span></div>
+    <div class="cart-page__subtotal"><span>Verzending</span><span>{{ order.total_shipping_price | money }}</span></div>
+    <div class="cart-page__subtotal"><span>Totaal</span><span>{{ order.total_price | money }}</span></div>
+  </div>
+
+  <h2>Verzendadres</h2>
+  {%- if order.shipping_address -%}
+    <address>{{ order.shipping_address | format_address }}</address>
+  {%- endif -%}
+</section>

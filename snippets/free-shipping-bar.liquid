@@ -1,0 +1,18 @@
+{%- liquid
+  assign threshold = settings.free_shipping_threshold | times: 100
+  assign remaining = threshold | minus: cart.total_price
+  assign percent = cart.total_price | times: 100 | divided_by: threshold
+  if percent > 100
+    assign percent = 100
+  endif
+-%}
+<div class="free-shipping-bar">
+  {%- if remaining > 0 -%}
+    <p>Nog <strong>{{ remaining | money }}</strong> tot gratis verzending</p>
+  {%- else -%}
+    <p>🎉 Je hebt gratis verzending!</p>
+  {%- endif -%}
+  <div class="free-shipping-bar__track">
+    <div class="free-shipping-bar__fill" style="width:{{ percent }}%"></div>
+  </div>
+</div>

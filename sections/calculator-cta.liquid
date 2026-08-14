@@ -1,0 +1,53 @@
+<section class="calculator-cta">
+  <div class="page-width">
+    <div class="calculator-cta__inner">
+      <div class="calculator-cta__text">
+        {%- if section.settings.eyebrow != blank -%}<p class="calculator-cta__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.text }}</p>
+        <a href="{{ section.settings.button_url | default: '#' }}" class="button button--accent">{{ section.settings.button_label }}</a>
+      </div>
+      <div class="calculator-cta__stats">
+        {%- for block in section.blocks -%}
+          <div class="calculator-cta__stat" {{ block.shopify_attributes }}>
+            <span class="calculator-cta__stat-number">{{ block.settings.number }}</span>
+            <span class="calculator-cta__stat-label">{{ block.settings.label }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Calculator CTA",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kicker", "default": "Off-Grid Portaal" },
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Welk systeem past bij jouw situatie?" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Gebruik onze off-grid calculator en ontvang direct een passend advies op basis van jouw verbruik, budget en locatie." },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Start de calculator" },
+    { "type": "url", "id": "button_url", "label": "Knoplink" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistiek",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Getal", "default": "800+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "installaties" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "number": "800+", "label": "installaties" } },
+      { "type": "stat", "settings": { "number": "4.8/5", "label": "klantbeoordeling" } },
+      { "type": "stat", "settings": { "number": "10 jaar", "label": "garantie op accu's" } }
+    ]
+  },
+  "presets": [
+    { "name": "Calculator CTA" }
+  ]
+}
+{% endschema %}

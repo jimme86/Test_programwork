@@ -1,0 +1,21 @@
+<section class="collection-list-page page-width">
+  <h1>Alle categorieën</h1>
+  <div class="collection-list__grid">
+    {%- for coll in collections -%}
+      <a href="{{ coll.url }}" class="collection-card">
+        <div class="collection-card__media">
+          {%- if coll.image -%}
+            <img src="{{ coll.image | image_url: width: 500 }}" alt="{{ coll.title | escape }}" loading="lazy" width="500" height="500">
+          {%- else -%}
+            <div class="collection-card__placeholder">{% render 'icon', icon: 'sun' %}</div>
+          {%- endif -%}
+        </div>
+        <span class="collection-card__title">{{ coll.title }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Alle collecties", "settings": [] }
+{% endschema %}

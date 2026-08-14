@@ -1,0 +1,47 @@
+{%- liquid
+  assign featured_collection = collections[section.settings.collection]
+-%}
+<section class="featured-collection">
+  <div class="page-width">
+    <div class="section-heading section-heading--split">
+      <div>
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+      {%- if featured_collection -%}
+        <a href="{{ featured_collection.url }}" class="link-with-icon">Bekijk alles {% render 'icon', icon: 'chevron-right' %}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="product-grid product-grid--{{ section.settings.columns }}">
+      {%- if featured_collection -%}
+        {%- for card_product in featured_collection.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', card_product: card_product %}
+        {%- else -%}
+          {%- for i in (1..section.settings.products_to_show) -%}
+            <div class="product-card product-card--placeholder">
+              <div class="product-card__media"><div class="product-card__placeholder">{% render 'icon', icon: 'sun' %}</div></div>
+              <div class="product-card__info"><h3 class="product-card__title">Voeg producten toe</h3></div>
+            </div>
+          {%- endfor -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Uitgelichte collectie",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Populaire off-grid sets" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Complete, plug-and-play systemen inclusief zonnepanelen, accu en omvormer." },
+    { "type": "collection", "id": "collection", "label": "Collectie" },
+    { "type": "range", "id": "products_to_show", "label": "Aantal producten", "min": 2, "max": 12, "step": 1, "default": 8 },
+    { "type": "select", "id": "columns", "label": "Kolommen (desktop)", "options": [{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "4" }
+  ],
+  "presets": [
+    { "name": "Uitgelichte collectie" }
+  ]
+}
+{% endschema %}

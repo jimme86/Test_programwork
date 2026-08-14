@@ -1,0 +1,35 @@
+<section class="account-page page-width">
+  <div class="account-page__narrow">
+    <h1>Inloggen</h1>
+    {% form 'customer_login' %}
+      {%- if form.errors -%}
+        <p class="form__message" role="alert">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <div class="form-row">
+        <label for="CustomerEmail">E-mail</label>
+        <input type="email" id="CustomerEmail" name="customer[email]" class="input" required autocomplete="email">
+      </div>
+      <div class="form-row">
+        <label for="CustomerPassword">Wachtwoord</label>
+        <input type="password" id="CustomerPassword" name="customer[password]" class="input" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="button button--accent button--full">Inloggen</button>
+      <div class="account-page__links">
+        <a href="#recover" id="RecoverPassword">Wachtwoord vergeten?</a>
+        <a href="{{ routes.account_register_url }}">Account aanmaken</a>
+      </div>
+    {% endform %}
+
+    {% form 'recover_customer_password', class: 'password-recover' %}
+      <h2>Wachtwoord herstellen</h2>
+      {%- if form.posted_successfully? -%}
+        <p class="form__message form__message--success">We hebben je een e-mail gestuurd met een link om je wachtwoord te herstellen.</p>
+      {%- endif -%}
+      <div class="form-row">
+        <label for="RecoverEmail">E-mail</label>
+        <input type="email" id="RecoverEmail" name="email" class="input" required>
+      </div>
+      <button type="submit" class="button button--secondary">Verstuur herstel-e-mail</button>
+    {% endform %}
+  </div>
+</section>

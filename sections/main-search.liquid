@@ -1,0 +1,42 @@
+<section class="search-page page-width">
+  <div class="search-page__header">
+    <h1>Zoeken</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-page__form">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Zoek producten, artikelen..." class="input" aria-label="Zoeken">
+      <input type="hidden" name="type" value="{{ search.types | join: ',' }}">
+      <button type="submit" class="button button--accent">{% render 'icon', icon: 'search' %}</button>
+    </form>
+    {%- if search.performed -%}
+      <p class="search-page__count">{{ search.results_count }} resultaten voor &ldquo;{{ search.terms }}&rdquo;</p>
+    {%- endif -%}
+  </div>
+
+  {%- if search.performed -%}
+    {%- paginate search.results by section.settings.results_per_page -%}
+      <div class="product-grid product-grid--4">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {% render 'product-card', card_product: item %}
+          {%- else -%}
+            <a href="{{ item.url }}" class="blog-card">
+              <h3 class="blog-card__title">{{ item.title }}</h3>
+              <p class="blog-card__excerpt">{{ item.content | strip_html | truncate: 110 }}</p>
+            </a>
+          {%- endif -%}
+        {%- else -%}
+          <p>Geen resultaten gevonden.</p>
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Zoekresultaten",
+  "settings": [
+    { "type": "range", "id": "results_per_page", "label": "Resultaten per pagina", "min": 8, "max": 48, "step": 4, "default": 24 }
+  ]
+}
+{% endschema %}

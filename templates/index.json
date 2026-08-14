@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "usp_bar": { "type": "usp-bar" },
+    "collection_list": { "type": "collection-list" },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": { "heading": "Populaire off-grid sets" }
+    },
+    "calculator_cta": { "type": "calculator-cta" },
+    "rich_text": { "type": "rich-text" },
+    "testimonials": { "type": "testimonials" },
+    "blog_posts": { "type": "blog-posts" }
+  },
+  "order": [
+    "hero",
+    "usp_bar",
+    "collection_list",
+    "featured_collection",
+    "calculator_cta",
+    "rich_text",
+    "testimonials",
+    "blog_posts"
+  ]
+}

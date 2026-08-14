@@ -1,0 +1,40 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Getagd \"{{ tags }}\"",
+      "page": "Pagina {{ page }}"
+    },
+    "search": {
+      "no_results": "Geen resultaten gevonden voor \"{{ terms }}\"."
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Direct naar de content"
+  },
+  "products": {
+    "product": {
+      "on_sale": "Aanbieding",
+      "price": {
+        "regular_price": "Normale prijs",
+        "sale_price": "Aanbiedingsprijs"
+      },
+      "sold_out": "Uitverkocht",
+      "add_to_cart": "In winkelwagen"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Winkelwagen",
+      "empty": "Je winkelwagen is leeg.",
+      "checkout": "Afrekenen",
+      "subtotal": "Subtotaal"
+    }
+  },
+  "layout": {
+    "customer": {
+      "log_in": "Inloggen",
+      "log_out": "Uitloggen",
+      "create_account": "Account aanmaken"
+    }
+  }
+}

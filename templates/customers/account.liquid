@@ -1,0 +1,28 @@
+<section class="account-page page-width">
+  <div class="account-page__header">
+    <h1>Hallo{% if customer.first_name != blank %}, {{ customer.first_name }}{% endif %}</h1>
+    {{ 'layout.customer.log_out' | t: default: 'Uitloggen' | link_to: routes.account_logout_url, class: 'button button--secondary' }}
+  </div>
+
+  <h2>Bestellingen</h2>
+  {%- if customer.orders.size > 0 -%}
+    <table class="cart-table">
+      <thead><tr><th>Order</th><th>Datum</th><th>Betaalstatus</th><th>Totaal</th></tr></thead>
+      <tbody>
+        {%- for order in customer.orders -%}
+          <tr>
+            <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+            <td>{{ order.created_at | date: '%d-%m-%Y' }}</td>
+            <td>{{ order.financial_status_label }}</td>
+            <td>{{ order.total_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  {%- else -%}
+    <p>Je hebt nog geen bestellingen geplaatst.</p>
+  {%- endif -%}
+
+  <h2>Adressen</h2>
+  <p><a href="{{ routes.account_addresses_url }}" class="link-with-icon">Adressen beheren {% render 'icon', icon: 'chevron-right' %}</a></p>
+</section>

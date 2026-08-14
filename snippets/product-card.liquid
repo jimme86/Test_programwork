@@ -1,0 +1,51 @@
+{%- comment -%}
+  Renders a product card.
+  Accepts: card_product (product object)
+{%- endcomment -%}
+<div class="product-card">
+  <a href="{{ card_product.url }}" class="product-card__media-link" aria-label="{{ card_product.title }}">
+    <div class="product-card__media">
+      {%- if card_product.featured_media -%}
+        <img
+          srcset="{{ card_product.featured_media | image_url: width: 300 }} 300w, {{ card_product.featured_media | image_url: width: 600 }} 600w"
+          src="{{ card_product.featured_media | image_url: width: 600 }}"
+          sizes="(min-width: 990px) 25vw, 50vw"
+          alt="{{ card_product.featured_media.alt | escape }}"
+          loading="lazy"
+          width="{{ card_product.featured_media.width }}"
+          height="{{ card_product.featured_media.height }}"
+          class="product-card__image product-card__image--primary"
+        >
+        {%- if card_product.media[1] -%}
+          <img
+            src="{{ card_product.media[1] | image_url: width: 600 }}"
+            alt=""
+            loading="lazy"
+            width="{{ card_product.media[1].width }}"
+            height="{{ card_product.media[1].height }}"
+            class="product-card__image product-card__image--secondary"
+          >
+        {%- endif -%}
+      {%- else -%}
+        <div class="product-card__placeholder">{% render 'icon', icon: 'sun' %}</div>
+      {%- endif -%}
+
+      {%- if card_product.compare_at_price > card_product.price -%}
+        <span class="badge badge--sale">-{{ card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round }}%</span>
+      {%- endif -%}
+      {%- unless card_product.available -%}
+        <span class="badge badge--sold-out">Uitverkocht</span>
+      {%- endunless -%}
+    </div>
+  </a>
+
+  <div class="product-card__info">
+    {%- if card_product.vendor and show_vendor -%}
+      <p class="product-card__vendor">{{ card_product.vendor }}</p>
+    {%- endif -%}
+    <h3 class="product-card__title">
+      <a href="{{ card_product.url }}">{{ card_product.title }}</a>
+    </h3>
+    {% render 'price', target: card_product %}
+  </div>
+</div>

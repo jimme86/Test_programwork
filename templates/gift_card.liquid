@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cadeaubon &mdash; {{ shop.name }}</title>
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  <style>body{max-width:640px;margin:60px auto;text-align:center;font-family:sans-serif;} .gift-card__code{font-size:28px;letter-spacing:2px;background:#F6F3EC;padding:16px 24px;border-radius:10px;display:inline-block;margin:24px 0;}</style>
+</head>
+<body>
+  <h1>Cadeaubon &mdash; {{ shop.name }}</h1>
+  <p>Waarde: {{ gift_card.initial_value | money }}</p>
+  <div class="gift-card__code">{{ gift_card.code | format_code }}</div>
+  {%- if gift_card.enabled and gift_card.expired != true -%}
+    <p><a class="button button--accent" href="{{ shop.url }}">Besteed je cadeaubon</a></p>
+  {%- else -%}
+    <p>Deze cadeaubon is niet meer geldig.</p>
+  {%- endif -%}
+</body>
+</html>

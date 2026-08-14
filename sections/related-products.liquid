@@ -1,0 +1,26 @@
+{%- assign related_collection_handle = product.type | handleize -%}
+{%- assign related_collection = collections[related_collection_handle] -%}
+<section class="featured-collection related-products" data-recommendations data-product-id="{{ product.id }}" data-limit="{{ section.settings.products_to_show }}">
+  <div class="page-width">
+    <div class="section-heading">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="product-grid product-grid--4" data-recommendations-target>
+      {%- for card_product in related_collection.products limit: section.settings.products_to_show -%}
+        {%- unless card_product.id == product.id -%}
+          {% render 'product-card', card_product: card_product %}
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gerelateerde producten",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Vaak samen gekocht" },
+    { "type": "range", "id": "products_to_show", "label": "Aantal producten", "min": 2, "max": 8, "step": 1, "default": 4 }
+  ]
+}
+{% endschema %}

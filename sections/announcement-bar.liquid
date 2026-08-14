@@ -1,0 +1,18 @@
+<div class="announcement-bar">
+  <div class="announcement-bar__inner">
+    {%- if section.settings.text_1 != blank -%}<span>{{ section.settings.text_1 }}</span>{%- endif -%}
+    {%- if section.settings.text_2 != blank -%}<span>{{ section.settings.text_2 }}</span>{%- endif -%}
+    {%- if section.settings.text_3 != blank -%}<span>{{ section.settings.text_3 }}</span>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Aankondigingsbalk",
+  "settings": [
+    { "type": "text", "id": "text_1", "label": "Tekst 1", "default": "☎ Gratis advies: 085 00 126 50" },
+    { "type": "text", "id": "text_2", "label": "Tekst 2", "default": "🔋 800+ off-grid installaties" },
+    { "type": "text", "id": "text_3", "label": "Tekst 3", "default": "🚚 Snelle levering in heel Nederland & België" }
+  ]
+}
+{% endschema %}

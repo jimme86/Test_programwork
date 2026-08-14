@@ -1,0 +1,85 @@
+<header class="site-header" data-header>
+  <div class="site-header__inner">
+    <button class="site-header__menu-toggle" data-mobile-menu-toggle aria-label="Menu" aria-expanded="false">
+      {% render 'icon', icon: 'menu' %}
+    </button>
+
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      {%- if settings.logo -%}
+        <img
+          src="{{ settings.logo | image_url: width: settings.logo_width | times: 2 }}"
+          alt="{{ shop.name }}"
+          width="{{ settings.logo_width }}"
+          height="{{ settings.logo_width | times: settings.logo.aspect_ratio | divided_by: 1.0 | round }}"
+        >
+      {%- else -%}
+        <span class="site-header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="site-header__nav" aria-label="Hoofdmenu">
+      <ul>
+        {%- for link in section.settings.main_menu.links -%}
+          <li class="{% if link.links != blank %}has-dropdown{% endif %}">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="dropdown">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="{{ section.settings.calculator_url | default: '#' }}" class="site-header__calculator-link">
+        {% render 'icon', icon: 'sun' %}<span>Off-grid calculator</span>
+      </a>
+      <a href="{{ routes.search_url }}" class="site-header__icon-link" aria-label="Zoeken">{% render 'icon', icon: 'search' %}</a>
+      <a href="{{ routes.account_url }}" class="site-header__icon-link" aria-label="Account">{% render 'icon', icon: 'account' %}</a>
+      <button type="button" class="site-header__icon-link cart-icon-bubble" data-cart-drawer-open aria-label="Winkelwagen ({{ cart.item_count }} artikelen)">
+        {% render 'icon', icon: 'cart' %}
+        <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__mobile-menu" data-mobile-menu>
+    <ul>
+      {%- for link in section.settings.main_menu.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- if link.links != blank -%}
+            <ul class="dropdown dropdown--mobile">
+              {%- for child in link.links -%}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Hoofdmenu",
+      "default": "main-menu"
+    },
+    {
+      "type": "url",
+      "id": "calculator_url",
+      "label": "Link naar off-grid calculator"
+    }
+  ]
+}
+{% endschema %}

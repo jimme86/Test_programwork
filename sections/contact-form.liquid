@@ -1,0 +1,52 @@
+<section class="contact-section page-width">
+  {% render 'breadcrumbs' %}
+  <div class="contact-section__grid">
+    <div class="contact-section__info">
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+      <ul class="site-footer__contact">
+        {%- if settings.phone_number != blank -%}<li><a href="tel:{{ settings.phone_number | remove: ' ' }}">{% render 'icon', icon: 'phone' %} {{ settings.phone_number }}</a></li>{%- endif -%}
+        {%- if settings.email_address != blank -%}<li><a href="mailto:{{ settings.email_address }}">{% render 'icon', icon: 'mail' %} {{ settings.email_address }}</a></li>{%- endif -%}
+        {%- if settings.address != blank -%}<li>{% render 'icon', icon: 'pin' %} {{ settings.address }}</li>{%- endif -%}
+      </ul>
+    </div>
+
+    <div class="contact-section__form">
+      {% form 'contact' %}
+        {%- if form.posted_successfully? -%}
+          <p class="form__message form__message--success" role="status">Bedankt! We nemen zo snel mogelijk contact met je op.</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="form__message" role="alert">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+        <div class="form-row">
+          <label for="ContactName">Naam</label>
+          <input type="text" id="ContactName" name="contact[name]" class="input" required>
+        </div>
+        <div class="form-row">
+          <label for="ContactEmail">E-mail</label>
+          <input type="email" id="ContactEmail" name="contact[email]" class="input" required>
+        </div>
+        <div class="form-row">
+          <label for="ContactPhone">Telefoon (optioneel)</label>
+          <input type="tel" id="ContactPhone" name="contact[phone]" class="input">
+        </div>
+        <div class="form-row">
+          <label for="ContactMessage">Bericht</label>
+          <textarea id="ContactMessage" name="contact[body]" rows="5" class="input" required></textarea>
+        </div>
+        <button type="submit" class="button button--accent">Versturen</button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contactformulier",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Neem contact op" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Vragen over een off-grid systeem of advies nodig? Ons team staat klaar." }
+  ]
+}
+{% endschema %}

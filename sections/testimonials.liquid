@@ -1,0 +1,49 @@
+<section class="testimonials">
+  <div class="page-width">
+    <div class="section-heading">
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="testimonials__grid">
+      {%- for block in section.blocks -%}
+        <blockquote class="testimonial-card" {{ block.shopify_attributes }}>
+          <div class="testimonial-card__stars">
+            {%- for i in (1..5) -%}{% render 'icon', icon: 'star' %}{%- endfor -%}
+          </div>
+          <p>&ldquo;{{ block.settings.quote }}&rdquo;</p>
+          <cite>{{ block.settings.author }}</cite>
+        </blockquote>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Klantreviews",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Wat klanten zeggen" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Beoordeeld met een 4,8/5 door onze klanten op Trustpilot." }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Vlekkeloze installatie en super advies vooraf. We zijn nu volledig zelfvoorzienend." },
+        { "type": "text", "id": "author", "label": "Naam", "default": "Tevreden klant" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "review", "settings": { "quote": "Vlekkeloze installatie en super advies vooraf. We zijn nu volledig zelfvoorzienend.", "author": "Familie de Vries" } },
+      { "type": "review", "settings": { "quote": "Plug-and-play systeem werkte precies zoals beloofd. Aanrader voor iedereen die van het gas af wil.", "author": "M. Jansen" } },
+      { "type": "review", "settings": { "quote": "Snelle levering en duidelijke uitleg. De off-grid calculator gaf direct het juiste advies.", "author": "R. Bakker" } }
+    ]
+  },
+  "presets": [
+    { "name": "Klantreviews" }
+  ]
+}
+{% endschema %}

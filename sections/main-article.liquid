@@ -1,0 +1,45 @@
+<section class="article page-width">
+  {% render 'breadcrumbs' %}
+  <article>
+    <header class="article__header">
+      <p class="article__meta">{{ article.published_at | date: '%d %B %Y' }}{% if article.author != blank %} &middot; {{ article.author }}{% endif %}</p>
+      <h1>{{ article.title }}</h1>
+    </header>
+    {%- if article.image -%}
+      <div class="article__image">
+        <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" width="{{ article.image.width }}" height="{{ article.image.height }}">
+      </div>
+    {%- endif -%}
+    <div class="article__content rte">
+      {{ article.content }}
+    </div>
+
+    {%- if blog.comments_enabled? -%}
+      <div class="article__comments">
+        <h2>{{ article.comments_count }} reacties</h2>
+        {%- for comment in article.comments -%}
+          <div class="article__comment">
+            <p class="article__comment-author">{{ comment.author }}</p>
+            <div class="rte">{{ comment.content }}</div>
+          </div>
+        {%- endfor -%}
+        {% form 'new_comment', article %}
+          {%- if form.posted_successfully? -%}
+            <p class="form__message form__message--success">Bedankt voor je reactie!</p>
+          {%- endif -%}
+          <div class="form-row"><label for="CommentAuthor">Naam</label><input type="text" id="CommentAuthor" name="comment[author]" class="input" required></div>
+          <div class="form-row"><label for="CommentEmail">E-mail</label><input type="email" id="CommentEmail" name="comment[email]" class="input" required></div>
+          <div class="form-row"><label for="CommentBody">Reactie</label><textarea id="CommentBody" name="comment[body]" rows="4" class="input" required></textarea></div>
+          <button type="submit" class="button button--secondary">Plaats reactie</button>
+        {% endform %}
+      </div>
+    {%- endif -%}
+  </article>
+</section>
+
+{% schema %}
+{
+  "name": "Artikel",
+  "settings": []
+}
+{% endschema %}

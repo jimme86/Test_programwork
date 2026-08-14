@@ -1,0 +1,13 @@
+<section class="account-page page-width">
+  <div class="account-page__narrow">
+    <h1>Account activeren</h1>
+    <p>Maak je wachtwoord aan om je account te activeren.</p>
+    {% form 'activate_customer_password' %}
+      {%- if form.errors -%}<p class="form__message" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <div class="form-row"><label for="ActivatePassword">Wachtwoord</label><input type="password" id="ActivatePassword" name="customer[password]" class="input" required></div>
+      <div class="form-row"><label for="ActivatePasswordConfirm">Bevestig wachtwoord</label><input type="password" id="ActivatePasswordConfirm" name="customer[password_confirmation]" class="input" required></div>
+      <button type="submit" class="button button--accent">Account activeren</button>
+      <button type="submit" name="decline" class="button button--secondary">Uitnodiging afwijzen</button>
+    {% endform %}
+  </div>
+</section>

@@ -1,0 +1,29 @@
+<section class="account-page page-width">
+  <a href="{{ routes.account_url }}" class="link-with-icon">&larr; Terug naar account</a>
+  <h1>Adressen</h1>
+
+  {%- for address in customer.addresses -%}
+    <div class="address-card">
+      <address>{{ address | format_address }}</address>
+      <div class="address-card__actions">
+        <a href="{{ routes.account_addresses_url }}/{{ address.id }}/edit" class="link-with-icon">Bewerken</a>
+        {% form 'customer_address', address %}
+          <button type="submit" name="_method" value="delete" class="link-with-icon" onclick="return confirm('Adres verwijderen?')">Verwijderen</button>
+        {% endform %}
+      </div>
+    </div>
+  {%- else -%}
+    <p>Je hebt nog geen adressen opgeslagen.</p>
+  {%- endfor -%}
+
+  {% form 'customer_address', customer.new_address %}
+    <h2>Nieuw adres toevoegen</h2>
+    <div class="form-row"><label for="AddressFirstName">Voornaam</label><input type="text" id="AddressFirstName" name="address[first_name]" class="input"></div>
+    <div class="form-row"><label for="AddressLastName">Achternaam</label><input type="text" id="AddressLastName" name="address[last_name]" class="input"></div>
+    <div class="form-row"><label for="AddressStreet">Straat en huisnummer</label><input type="text" id="AddressStreet" name="address[address1]" class="input"></div>
+    <div class="form-row"><label for="AddressCity">Plaats</label><input type="text" id="AddressCity" name="address[city]" class="input"></div>
+    <div class="form-row"><label for="AddressZip">Postcode</label><input type="text" id="AddressZip" name="address[zip]" class="input"></div>
+    <div class="form-row"><label for="AddressCountry">Land</label>{{ form.country_option_tags }}</div>
+    <button type="submit" class="button button--accent">Adres opslaan</button>
+  {% endform %}
+</section>

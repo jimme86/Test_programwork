@@ -1,0 +1,15 @@
+<section class="error-404 page-width">
+  <div class="error-404__inner">
+    <p class="error-404__eyebrow">{% render 'icon', icon: 'sun' %} 404</p>
+    <h1>Deze pagina is off-grid gegaan</h1>
+    <p>De pagina die je zoekt bestaat niet (meer). Ga terug naar de homepage of bekijk onze webshop.</p>
+    <div class="error-404__actions">
+      <a href="{{ routes.root_url }}" class="button button--accent">Naar de homepage</a>
+      <a href="{{ routes.all_products_collection_url }}" class="button button--secondary">Bekijk de webshop</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

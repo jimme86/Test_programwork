@@ -1,0 +1,60 @@
+<section class="portaal">
+  <div class="page-width">
+    <div class="portaal__intro">
+      {%- if section.settings.eyebrow != blank -%}<p class="calculator-cta__eyebrow portaal__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+    </div>
+
+    <ol class="portaal__steps">
+      {%- for block in section.blocks -%}
+        <li class="portaal__step" {{ block.shopify_attributes }}>
+          <span class="portaal__step-number">{{ forloop.index }}</span>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+
+    <div class="portaal__cta">
+      <a href="{{ section.settings.button_url | default: '#' }}" class="button button--accent">{{ section.settings.button_label }}</a>
+      {%- if section.settings.phone_label != blank -%}
+        <a href="tel:{{ settings.phone_number | remove: ' ' }}" class="link-with-icon portaal__phone">{% render 'icon', icon: 'phone' %} {{ section.settings.phone_label }}: {{ settings.phone_number }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Off-grid Portaal",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kicker", "default": "Off-grid Portaal" },
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Welk off-grid systeem past bij jou?" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Beantwoord een paar vragen over je verbruik, locatie en wensen en ontvang direct een passend systeemadvies met prijsindicatie." },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Start het Off-grid Portaal" },
+    { "type": "url", "id": "button_url", "label": "Knoplink" },
+    { "type": "text", "id": "phone_label", "label": "Telefoon-label", "default": "Liever persoonlijk advies? Bel ons" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Stap",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titel" },
+        { "type": "textarea", "id": "text", "label": "Tekst" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "step", "settings": { "title": "Verbruik invullen", "text": "Geef aan hoeveel energie je nodig hebt en waarvoor: woning, camper, boot of bedrijf." } },
+      { "type": "step", "settings": { "title": "Advies ontvangen", "text": "Onze specialisten stellen een passend systeem samen met zonnepanelen, accu en omvormer." } },
+      { "type": "step", "settings": { "title": "Plug-and-play bestellen", "text": "Je ontvangt het systeem voorbekabeld en klaar om aan te sluiten." } }
+    ]
+  },
+  "presets": [
+    { "name": "Off-grid Portaal" }
+  ]
+}
+{% endschema %}

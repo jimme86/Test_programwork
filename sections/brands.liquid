@@ -1,0 +1,48 @@
+<section class="brands">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <p class="brands__heading">{{ section.settings.heading }}</p>
+    {%- endif -%}
+    <ul class="brands__list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          {%- if block.settings.logo -%}
+            <img src="{{ block.settings.logo | image_url: width: 240 }}" alt="{{ block.settings.name }}" loading="lazy" width="120" height="{{ 120 | divided_by: block.settings.logo.aspect_ratio | round }}">
+          {%- else -%}
+            <span class="brands__name">{{ block.settings.name }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Merken",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Wij werken met A-merken" }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Merk",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Merknaam", "default": "Merknaam" },
+        { "type": "image_picker", "id": "logo", "label": "Logo (optioneel, anders tekst)" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "brand", "settings": { "name": "Victron Energy" } },
+      { "type": "brand", "settings": { "name": "Hithium" } },
+      { "type": "brand", "settings": { "name": "Pylontech" } },
+      { "type": "brand", "settings": { "name": "Solarge" } }
+    ]
+  },
+  "presets": [
+    { "name": "Merken" }
+  ]
+}
+{% endschema %}

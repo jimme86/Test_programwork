@@ -7,6 +7,7 @@
       "type": "featured-collection",
       "settings": { "heading": "Populaire off-grid sets" }
     },
+    "brands": { "type": "brands" },
     "calculator_cta": { "type": "calculator-cta" },
     "rich_text": { "type": "rich-text" },
     "testimonials": { "type": "testimonials" },
@@ -17,6 +18,7 @@
     "usp_bar",
     "collection_list",
     "featured_collection",
+    "brands",
     "calculator_cta",
     "rich_text",
     "testimonials",

@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "portaal": { "type": "off-grid-portaal" },
+    "calculator_cta": {
+      "type": "calculator-cta",
+      "settings": { "heading": "Nog vragen? Wij denken met je mee" }
+    }
+  },
+  "order": ["portaal", "calculator_cta"]
+}

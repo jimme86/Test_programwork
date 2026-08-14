@@ -293,6 +293,34 @@ button { font: inherit; cursor: pointer; }
 .price__compare { text-decoration: line-through; color: var(--color-text-light); font-weight: 500; font-size: .88em; }
 .price__sale { color: #C0392B; }
 
+/* ---------- Brands ---------- */
+.brands { padding: 40px 0; }
+.brands__heading { text-align: center; text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; color: var(--color-text-light); margin-bottom: 24px; }
+.brands__list { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.brands__list img { filter: grayscale(1); opacity: .7; transition: opacity .2s ease, filter .2s ease; }
+.brands__list img:hover { filter: none; opacity: 1; }
+.brands__name { font-family: var(--font-heading-family); font-weight: 700; font-size: 1.15rem; color: var(--color-text-light); }
+
+/* ---------- Off-grid Portaal ---------- */
+.portaal { padding: 64px 0; }
+.portaal__intro { max-width: 640px; margin: 0 auto 40px; text-align: center; }
+.portaal__eyebrow { justify-content: center; }
+.portaal__steps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  counter-reset: step; margin-bottom: 40px;
+}
+.portaal__step { list-style: none; text-align: center; padding: 0 12px; }
+.portaal__step-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--color-primary); color: #fff;
+  font-family: var(--font-heading-family); font-weight: 700;
+  margin-bottom: 14px;
+}
+.portaal__step p { color: var(--color-text-light); font-size: .9rem; }
+.portaal__cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.portaal__phone { color: var(--color-text-light); font-weight: 500; }
+
 /* ---------- Calculator CTA ---------- */
 .calculator-cta { background: var(--color-primary); color: #fff; border-radius: var(--radius); margin: 0 20px; max-width: calc(var(--page-width) - 40px); margin-left: auto; margin-right: auto; }
 .calculator-cta__inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; padding: 48px; flex-wrap: wrap; }
@@ -532,6 +560,8 @@ button { font: inherit; cursor: pointer; }
   .collection-list__grid { grid-template-columns: repeat(3, 1fr); }
   .usp-bar__list { grid-template-columns: repeat(2, 1fr); }
   .testimonials__grid { grid-template-columns: 1fr; }
+  .portaal__steps { grid-template-columns: 1fr; gap: 32px; }
+  .brands__list { gap: 28px; }
   .blog-posts__grid { grid-template-columns: repeat(2, 1fr); }
   .site-footer__grid { grid-template-columns: 1fr 1fr; }
   .product-section__grid { grid-template-columns: 1fr; gap: 30px; }

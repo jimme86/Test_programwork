@@ -1,0 +1,46 @@
+.offgrid-social-feed {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.offgrid-social-feed__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.offgrid-social-feed__header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.offgrid-social-feed__header a {
+  text-decoration: none;
+  border: 1px solid currentColor;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.offgrid-social-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.offgrid-social-feed__item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+.offgrid-social-feed__loading,
+.offgrid-social-feed__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  opacity: 0.6;
+}

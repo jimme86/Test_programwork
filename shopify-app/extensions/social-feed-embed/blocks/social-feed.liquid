@@ -1,0 +1,37 @@
+{% comment %}
+  Renders a grid of the shop's latest Instagram posts, fetched at runtime
+  through the app proxy (/apps/social-feed) so no API keys ever reach the
+  storefront. Merchants add this as a section block via the theme editor.
+{% endcomment %}
+<div
+  class="offgrid-social-feed"
+  data-proxy-url="/apps/{{ block.settings.proxy_subpath | default: 'social-feed' }}"
+  data-limit="{{ block.settings.post_count | default: 8 }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="offgrid-social-feed__header">
+    <h2>{{ block.settings.heading | default: 'Follow @offgridlifestyle' }}</h2>
+    <a href="{{ block.settings.instagram_url | default: 'https://instagram.com/offgridlifestyle' }}" target="_blank" rel="noopener">
+      {{ block.settings.cta_label | default: 'Follow us' }}
+    </a>
+  </div>
+  <div class="offgrid-social-feed__grid" data-social-feed-grid>
+    <p class="offgrid-social-feed__loading">Loading latest posts…</p>
+  </div>
+</div>
+
+<script src="{{ 'social-feed.js' | asset_url }}" defer></script>
+{{ 'social-feed.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Social feed",
+  "target": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Follow @offgridlifestyle" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram profile URL" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Follow us" },
+    { "type": "range", "id": "post_count", "label": "Number of posts", "min": 4, "max": 12, "step": 1, "default": 8 }
+  ]
+}
+{% endschema %}

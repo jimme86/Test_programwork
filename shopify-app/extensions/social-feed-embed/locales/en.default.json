@@ -1,0 +1,9 @@
+{
+  "name": "Social feed",
+  "settings": {
+    "heading": { "label": "Heading" },
+    "instagram_url": { "label": "Instagram profile URL" },
+    "cta_label": { "label": "Button label" },
+    "post_count": { "label": "Number of posts" }
+  }
+}

@@ -1,0 +1,48 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+name = "offgrid-social-sync"
+client_id = "REPLACE_WITH_YOUR_SHOPIFY_APP_CLIENT_ID"
+application_url = "https://REPLACE_WITH_YOUR_APP_URL"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "offgrid-lifestyle.myshopify.com"
+
+[access_scopes]
+# Read/write products so the app can react to catalog changes and keep
+# the Facebook/Instagram/TikTok/YouTube catalogs in sync.
+scopes = "read_products,write_products,read_product_listings"
+
+[auth]
+redirect_urls = [
+  "https://REPLACE_WITH_YOUR_APP_URL/auth/callback",
+  "https://REPLACE_WITH_YOUR_APP_URL/auth/shopify/callback",
+  "https://REPLACE_WITH_YOUR_APP_URL/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = ["products/create"]
+  uri = "/webhooks/products/create"
+
+  [[webhooks.subscriptions]]
+  topics = ["products/update"]
+  uri = "/webhooks/products/update"
+
+  [[webhooks.subscriptions]]
+  topics = ["products/delete"]
+  uri = "/webhooks/products/delete"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks/app/uninstalled"
+
+[app_proxy]
+url = "https://REPLACE_WITH_YOUR_APP_URL/api/proxy"
+subpath = "social-feed"
+prefix = "apps"
+
+[pos]
+embedded = false

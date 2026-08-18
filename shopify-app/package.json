@@ -1,0 +1,56 @@
+{
+  "name": "offgrid-lifestyle-social-sync",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Shopify plugin that connects the offgrid-lifestyle.com store to Instagram, Facebook, TikTok and YouTube: catalog sync, auto-posting new products, and a storefront social feed embed.",
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "shopify app dev",
+    "config:link": "shopify app config link",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
+    "config:use": "shopify app config use",
+    "env": "shopify app env",
+    "start": "remix-serve ./build/server/index.js",
+    "docker-start": "npm run setup && npm run start",
+    "setup": "prisma generate && prisma migrate deploy",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "shopify": "shopify",
+    "prisma": "prisma",
+    "graphql-codegen": "graphql-codegen"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "@remix-run/node": "^2.14.0",
+    "@remix-run/react": "^2.14.0",
+    "@remix-run/serve": "^2.14.0",
+    "@shopify/app-bridge-react": "^4.1.6",
+    "@shopify/polaris": "^13.9.0",
+    "@shopify/shopify-app-remix": "^3.7.0",
+    "@shopify/shopify-app-session-storage-prisma": "^5.1.0",
+    "googleapis": "^144.0.0",
+    "isbot": "^5.1.17",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.14.0",
+    "@shopify/api-codegen-preset": "^1.1.1",
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "prisma": "^5.20.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.9",
+    "vite-tsconfig-paths": "^5.0.1"
+  },
+  "engines": {
+    "node": "^18.20 || ^20.10 || >=21.0.0"
+  },
+  "author": "offgrid-lifestyle.com"
+}

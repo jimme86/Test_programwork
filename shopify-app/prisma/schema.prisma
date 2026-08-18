@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // SQLite is fine for a single-shop custom app; swap to postgresql for
+  // production / multi-store hosting (update `url` accordingly).
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+// Required by @shopify/shopify-app-session-storage-prisma
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+/// One row per connected social platform per shop.
+/// accessToken / refreshToken are stored encrypted (see app/services/encryption.server.ts).
+model SocialConnection {
+  id           String    @id @default(cuid())
+  shop         String
+  platform     String // "meta" | "tiktok" | "youtube"
+  accountId    String? // Page/IG business account id, TikTok shop id, YouTube channel id
+  accountName  String?
+  accessToken  String
+  refreshToken String?
+  expiresAt    DateTime?
+  /// JSON blob for platform-specific extras (catalog id, page id, ig business id, channel id...)
+  metadata     String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([shop, platform])
+}
+
+/// Per-shop toggles for what the plugin automates.
+model SyncSettings {
+  id                  String   @id @default(cuid())
+  shop                String   @unique
+  syncProductsMeta    Boolean  @default(true)
+  syncProductsTikTok  Boolean  @default(true)
+  syncProductsYouTube Boolean  @default(true)
+  autoPostInstagram   Boolean  @default(false)
+  autoPostFacebook    Boolean  @default(false)
+  autoPostTikTok      Boolean  @default(false)
+  autoPostYouTube     Boolean  @default(false)
+  postTemplate        String   @default("New in the shop: {{title}} 🌲⚡ {{url}}")
+  updatedAt           DateTime @updatedAt
+}
+
+/// Audit trail shown on the Activity page so store staff can see what the
+/// plugin did (or failed to do) for each product/platform.
+model ActivityLog {
+  id        String   @id @default(cuid())
+  shop      String
+  platform  String // "meta" | "tiktok" | "youtube" | "system"
+  action    String // "catalog_sync" | "auto_post" | "connect" | "disconnect" | "error"
+  productId String?
+  status    String // "success" | "error"
+  message   String?
+  createdAt DateTime @default(now())
+
+  @@index([shop, createdAt])
+}

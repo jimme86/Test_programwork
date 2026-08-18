@@ -1,0 +1,12 @@
+# Copy this file to "local.properties" (which is git-ignored) and fill in your values.
+# local.properties also needs the standard "sdk.dir" line pointing at your Android SDK;
+# Android Studio adds that automatically the first time you open the project.
+
+# Your Shopify store's *.myshopify.com domain, e.g. offgrid-lifestyle.myshopify.com
+SHOPIFY_SHOP_DOMAIN=
+
+# A Storefront API PUBLIC access token (Settings > Apps > Develop apps > your app >
+# API credentials > Storefront API access token). Never use the Admin API key here.
+SHOPIFY_STOREFRONT_TOKEN=
+
+# Leave both blank to run the app in built-in Demo Mode with sample offgrid products.

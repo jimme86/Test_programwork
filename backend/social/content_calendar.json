@@ -1,0 +1,73 @@
+{
+  "_readme": "Queue of social posts. status: draft -> scheduled -> published (or failed). The recurring agent only touches entries with status 'scheduled' whose date has arrived, and never re-publishes an entry once it is 'published'. Add new entries with status 'scheduled' to queue future posts; set status 'draft' to keep something out of the run until you approve it.",
+  "posts": [
+    {
+      "id": "2026-08-24-ig-intro",
+      "date": "2026-08-24",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Welkom bij Offgrid-lifestyle.com 👋⚡ Wij geloven dat energie-onafhankelijkheid geen luxe hoeft te zijn. Van hybride omvormers tot de juiste outdoor gear — wij helpen je off-grid dromen waar te maken. Volg ons voor tips, gidsen en de producten die het mogelijk maken. 🔋🌞\n#offgridwonen #zonneenergie #energieonafhankelijk #duurzaamleven #offgridliving",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/cover_banner.png",
+      "link": "https://offgrid-lifestyle.com"
+    },
+    {
+      "id": "2026-08-26-fb-intro",
+      "date": "2026-08-26",
+      "platform": "facebook",
+      "status": "scheduled",
+      "caption": "Offgrid-lifestyle.com helpt je energie-onafhankelijk te worden — van hybride omvormers tot outdoor essentials. Praktisch advies + kwaliteitsproducten voor je off-grid leven. Bekijk de shop via de link.",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/cover_banner.png",
+      "link": "https://offgrid-lifestyle.com"
+    },
+    {
+      "id": "2026-08-28-ig-pillar-blog",
+      "date": "2026-08-28",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Off-grid wonen in Nederland: waar begin je? 🏡⚡ In onze nieuwste blog delen we wat je écht nodig hebt — van zonnepanelen en accu's tot de juiste omvormer. Link in bio 🔗\n#offgridwonen #zelfvoorzienend #zonnepanelen #offgridNL",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/profile_icon.png",
+      "link": "https://offgrid-lifestyle.com/blogs/nieuws",
+      "note": "Publish the 'Off-grid wonen in Nederland' blog article to Shopify before this post goes out, so the link works."
+    },
+    {
+      "id": "2026-08-31-ig-sun2000",
+      "date": "2026-08-31",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "De Huawei SUN2000-5K-LB0 hybride omvormer: het hart van je zonne-energiesysteem 🔆 5kW vermogen, slim energiebeheer, en klaar voor zowel grid-tied als off-grid opstellingen. Bekijk 'm in de shop 👉 link in bio\n#huawei #zonneenergie #hybrideomvormer #offgridpower",
+      "image_url": "https://cdn.shopify.com/s/files/1/1017/2301/3446/files/HuaweiSUN2000-5K-LB0-5kW1-fasehybrideomvormer2.jpg?v=1786981007",
+      "link": "https://offgrid-lifestyle.com/products/huawei-sun2000-5k-lb0-5-kw-1-fase-hybride-omvormer",
+      "product_id": "gid://shopify/Product/15684481319238"
+    },
+    {
+      "id": "2026-09-02-pin-smartguard",
+      "date": "2026-09-02",
+      "platform": "pinterest",
+      "status": "scheduled",
+      "caption": "Energiebeheer dat meedenkt 🔋 De Huawei SmartGuard-63A-S0 bewaakt en optimaliseert je energiehuishouden — essentieel voor iedereen die serieus off-grid wil gaan.\n#energiemanagement #smartenergy #offgridleven #huawei",
+      "image_url": "https://cdn.shopify.com/s/files/1/1017/2301/3446/files/SmartGuard-63A-_S0_AUS0_6fa88191-69c4-4d2c-9aa6-e64f93a2188f.jpg?v=1786979138",
+      "link": "https://offgrid-lifestyle.com/products/huawei-smartguard-63a-s0-slim-energiemanagement-en-backup-systeem-1",
+      "product_id": "gid://shopify/Product/15684422631750"
+    },
+    {
+      "id": "2026-09-04-ig-smartguard",
+      "date": "2026-09-04",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Energiebeheer dat meedenkt 🔋 De Huawei SmartGuard-63A-S0 bewaakt en optimaliseert je energiehuishouden — essentieel voor iedereen die serieus off-grid wil gaan.\n#energiemanagement #smartenergy #offgridleven #huawei",
+      "image_url": "https://cdn.shopify.com/s/files/1/1017/2301/3446/files/SmartGuard-63A-_S0_AUS0_6fa88191-69c4-4d2c-9aa6-e64f93a2188f.jpg?v=1786979138",
+      "link": "https://offgrid-lifestyle.com/products/huawei-smartguard-63a-s0-slim-energiemanagement-en-backup-systeem-1",
+      "product_id": "gid://shopify/Product/15684422631750"
+    },
+    {
+      "id": "2026-09-07-ig-hammock",
+      "date": "2026-09-07",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Off-grid is niet alleen zonnepanelen ☀️ — het is ook gewoon tijd nemen om te ontspannen. Onze camping hangmat is de perfecte metgezel voor je volgende outdoor avontuur. 🏕️\n#offgridkamperen #hangmat #outdoorlife #vanlife",
+      "image_url": "https://cdn.shopify.com/s/files/1/1017/2301/3446/files/V0103451_000_MKT-v_11.jpg?v=1786789421",
+      "link": "https://offgrid-lifestyle.com/products/double-hammock-for-camping-rewong-innovagoods",
+      "product_id": "gid://shopify/Product/15680448528710"
+    }
+  ]
+}

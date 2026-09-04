@@ -68,6 +68,26 @@
       "image_url": "https://cdn.shopify.com/s/files/1/1017/2301/3446/files/V0103451_000_MKT-v_11.jpg?v=1786789421",
       "link": "https://offgrid-lifestyle.com/products/double-hammock-for-camping-rewong-innovagoods",
       "product_id": "gid://shopify/Product/15680448528710"
+    },
+    {
+      "id": "2026-09-09-ig-checklist",
+      "date": "2026-09-09",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Off-grid checklist: 5 dingen die beginners vaak vergeten 📝⚡ Van seizoensinvloeden op je opbrengst tot vergunningen voor je opstelling — off-grid gaan is meer dan alleen zonnepanelen kopen. Welke had jij niet verwacht?\n#offgridwonen #offgridtips #zelfvoorzienend #energieonafhankelijk",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/cover_banner.png",
+      "link": "https://offgrid-lifestyle.com",
+      "note": "Evergreen/educational — added by the agent when the queue ran low and the Shopify connector wasn't available to pull fresh product data. Not tied to a specific product's stock or status."
+    },
+    {
+      "id": "2026-09-11-fb-mythes",
+      "date": "2026-09-11",
+      "platform": "facebook",
+      "status": "scheduled",
+      "caption": "'Off-grid wonen is alleen voor de wildernis' — en 4 andere mythes die we graag ontkrachten. Off-grid leven is toegankelijker dan je denkt. 🌞🔋 Welke mythe hoor jij het vaakst?",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/profile_icon.png",
+      "link": "https://offgrid-lifestyle.com",
+      "note": "Evergreen/educational — added by the agent when the queue ran low and the Shopify connector wasn't available to pull fresh product data. Not tied to a specific product's stock or status."
     }
   ]
 }

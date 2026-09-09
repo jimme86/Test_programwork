@@ -88,6 +88,26 @@
       "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/profile_icon.png",
       "link": "https://offgrid-lifestyle.com",
       "note": "Evergreen/educational — added by the agent when the queue ran low and the Shopify connector wasn't available to pull fresh product data. Not tied to a specific product's stock or status."
+    },
+    {
+      "id": "2026-09-14-ig-costs",
+      "date": "2026-09-14",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Wat kost off-grid wonen écht? 💶 Een volledig systeem — zonnepanelen, omvormer én accu's — kost al snel €15.000 tot €30.000. Benieuwd waar dat bedrag vandaan komt en hoe je slim en stap voor stap kunt beginnen? 💡🔋\n#offgridkosten #zonneenergie #energieonafhankelijk #offgridwonen",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/cover_banner.png",
+      "link": "https://offgrid-lifestyle.com",
+      "note": "Evergreen/educational — added by the agent when the queue ran low and the Shopify connector wasn't available to pull fresh product data. Not tied to a specific product's stock or status."
+    },
+    {
+      "id": "2026-09-16-fb-winter-capacity",
+      "date": "2026-09-16",
+      "platform": "facebook",
+      "status": "scheduled",
+      "caption": "Off-grid in de winter is een heel andere uitdaging dan in de zomer ❄️☀️ Door de lagere zoninstraling heb je al snel 2-3x meer paneelcapaciteit nodig om je accu's ook op donkere dagen vol te houden. Dit is waarom seizoensplanning cruciaal is voordat je een systeem samenstelt.",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/profile_icon.png",
+      "link": "https://offgrid-lifestyle.com",
+      "note": "Evergreen/educational — added by the agent when the queue ran low and the Shopify connector wasn't available to pull fresh product data. Not tied to a specific product's stock or status."
     }
   ]
 }

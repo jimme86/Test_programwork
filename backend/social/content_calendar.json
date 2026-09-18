@@ -132,6 +132,16 @@
       "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/profile_icon.png",
       "link": "https://offgrid-lifestyle.com",
       "note": "Evergreen/educational — added 2026-09-16 while catalog still has zero active products (verified via search_products status:active). Not tied to a specific product's stock or status."
+    },
+    {
+      "id": "2026-09-23-ig-cooking",
+      "date": "2026-09-23",
+      "platform": "instagram",
+      "status": "scheduled",
+      "caption": "Off-grid koken hoeft niet ingewikkeld te zijn 🍳🔥 Van zonnekookers tot houtvuur-kooktoestellen: dit zijn 3 manieren om te koken zonder gas of stroom van het net. Welke zou jij proberen?\n#offgridkoken #zelfvoorzienend #offgridleven #duurzaamkoken",
+      "image_url": "https://raw.githubusercontent.com/jimme86/Test_programwork/claude/ai-agent-webshop-purchases-pv4csd/frontend/assets/social/cover_banner.png",
+      "link": "https://offgrid-lifestyle.com",
+      "note": "Evergreen/educational — added 2026-09-18 while catalog still has zero active products (verified via search_products status:active). Not tied to a specific product's stock or status."
     }
   ]
 }
